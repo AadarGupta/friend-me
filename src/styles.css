@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "NexaRegular";
+  src: url("./assets/fonts/NexaRegular.otf");
+}
+
+@font-face {
+  font-family: "NexaBlack";
+  src: url("./assets/fonts/NexaBlack.otf");
+}
+
+* {
+  background-image: url("./assets/backgrounds/BG.svg");
+  background-position: center;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: "NexaRegular";
+}

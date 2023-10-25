@@ -1,0 +1,46 @@
+.contact-page {
+  text-align: center;
+  border-radius: 25px;
+  padding: 50px 20px 20px 20px;
+  margin: 20px;
+  box-shadow: 0 1px 16px 0 rgba(0, 0, 0, 0.2);
+  background: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-page {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+}
+
+.contact-page .text {
+  text-align: center;
+  background: transparent;
+}
+
+.contact-page .name {
+  font-weight: 400;
+  font-family: "NexaBlack";
+  font-size: 40px;
+}
+
+.contact-page .details {
+  font-size: 25px;
+  padding: 3px;
+}
+
+.contact-page img {
+  margin-bottom: 40px;
+  border-radius: 50%;
+}
+
+.contact-page .minDetails {
+  font-size: 20px;
+  margin-bottom: 10px;
+  background: transparent;
+}

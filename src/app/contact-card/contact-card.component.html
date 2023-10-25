@@ -1,0 +1,9 @@
+<!--  HTML Component for the individual contact cards with image and names  -->
+<div class="contact-card" (click)="contactView()">
+  <img
+    height="100"
+    src="{{ contact.picture }}"
+    onerror="this.src='../../assets/images/person.svg'"
+  />
+  <div class="name">{{ contact.first + " " + contact.last }}</div>
+</div>

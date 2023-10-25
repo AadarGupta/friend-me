@@ -1,0 +1,24 @@
+<!--  Displays a page with all contacts and options for pagination  -->
+<div class="main-page">
+  <h1 class="title">Friend Me</h1>
+  <h2 class="tagline">The new way to find people</h2>
+  <!--   Displays the page and options to switch pages  -->
+  <div class="pagination-container" *ngIf="allContacts != []">
+    <h1 class="arrows" (click)="prevPage()"><</h1>
+    <h2 class="page">Page {{ pageNum }}</h2>
+    <h1 class="arrows" (click)="nextPage()">></h1>
+  </div>
+  <!--  Displays which results are being shown  -->
+  <p>
+    Showing results {{ (pageNum - 1) * 10 + 1 }} to
+    {{ pageNum * 10 }}
+  </p>
+  <!--   Loops 10 times and creates a display card for the loaded data -->
+  <div class="contacts">
+    <contact-card
+      *ngFor="let person of [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]"
+      (contactSelected)="onContactSelected($event)"
+      [contact]="allContacts[allContacts.length - person]"
+    ></contact-card>
+  </div>
+</div>
