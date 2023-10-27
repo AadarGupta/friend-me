@@ -21,4 +21,10 @@
       [contact]="contact"
     ></contact-card>
   </div>
+  <!--   Displays the page and options to switch pages  -->
+  <div class="pagination-container" *ngIf="allContacts != []">
+    <h1 class="arrows" (click)="prevPage()"><</h1>
+    <h2 class="page">Page {{ pageNum }}</h2>
+    <h1 class="arrows" (click)="nextPage()">></h1>
+  </div>
 </div>
