@@ -11,6 +11,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 5. Run:
    - 'npm start' to start the local server
    - 'npm test' to run local tests
+   - 'npm build' to build
 
 # Approach
 
