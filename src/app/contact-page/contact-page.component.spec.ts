@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ContactPageComponent } from './contact-page.component';
 
@@ -8,8 +9,9 @@ describe('ContactPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ContactPageComponent]
-    });
+      declarations: [ContactPageComponent],
+      imports: [RouterTestingModule],
+    }).compileComponents();
     fixture = TestBed.createComponent(ContactPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

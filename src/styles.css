@@ -17,4 +17,5 @@
   padding: 0;
   text-align: center;
   font-family: "NexaRegular";
+  box-sizing: border-box;
 }

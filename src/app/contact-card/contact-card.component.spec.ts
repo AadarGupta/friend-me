@@ -1,4 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  inject,
+  tick,
+  fakeAsync,
+} from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 import { ContactCardComponent } from './contact-card.component';
 
@@ -8,8 +16,8 @@ describe('ContactCardComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ContactCardComponent]
-    });
+      declarations: [ContactCardComponent],
+    }).compileComponents();
     fixture = TestBed.createComponent(ContactCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

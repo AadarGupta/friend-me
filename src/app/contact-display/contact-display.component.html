@@ -14,11 +14,11 @@
     {{ pageNum * 10 }}
   </p>
   <!--   Loops 10 times and creates a display card for the loaded data -->
-  <div class="contacts">
+  <div class="contacts" *ngIf="allContacts">
     <contact-card
-      *ngFor="let person of [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]"
+      *ngFor="let contact of allContacts[pageNum - 1]"
       (contactSelected)="onContactSelected($event)"
-      [contact]="allContacts[allContacts.length - person]"
+      [contact]="contact"
     ></contact-card>
   </div>
 </div>

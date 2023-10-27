@@ -1,5 +1,5 @@
 <!--  HTML Component for the individual contact cards with image and names  -->
-<div class="contact-card" (click)="contactView()">
+<div class="contact-card" (click)="contactView()" *ngIf="contact">
   <img
     height="100"
     src="{{ contact.picture }}"

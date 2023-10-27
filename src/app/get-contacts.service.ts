@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
-export class UsersService {
+export class GetContactsService {
   constructor(private http: HttpClient) {}
 
   // Gets data from the API endpoint

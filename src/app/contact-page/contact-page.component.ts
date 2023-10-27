@@ -1,6 +1,9 @@
+// Imports component and activated route
 import { Component } from '@angular/core';
-import { Contact } from '../model/contact';
 import { ActivatedRoute } from '@angular/router';
+
+// Imports the contact model
+import { Contact } from '../model/contact';
 
 @Component({
   selector: 'app-contact-page',
@@ -17,6 +20,7 @@ export class ContactPageComponent {
     this.activeRoute.queryParams.subscribe((params) => {
       // Maps a new contact based on values
       let newContact: Contact = {
+        title: params['title'],
         first: params['first'],
         last: params['last'],
         phone: params['phone'],

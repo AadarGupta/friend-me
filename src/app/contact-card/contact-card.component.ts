@@ -1,4 +1,7 @@
+// Imports component, event emitters and input and output
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+// Imports contact model
 import { Contact } from '../model/contact';
 
 @Component({

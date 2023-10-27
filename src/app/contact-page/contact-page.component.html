@@ -2,12 +2,15 @@
 <div class="full-page">
   <div class="contact-page">
     <!--  Displays an image, name, country, birthday and other contact information  -->
-    <img
-      height="150"
-      src="{{ contact.picture }}"
-      onerror="this.src='../assets/images/person.svg'"
-    />
-    <div class="name text">{{ contact.first + " " + contact.last }}</div>
+    <a href="{{ contact.picture }}">
+      <img
+        src="{{ contact.picture }}"
+        onerror="this.src='../assets/images/person.svg'"
+      />
+    </a>
+    <div class="name text">
+      {{ contact.title + ". " + contact.first + " " + contact.last }}
+    </div>
     <div class="minDetails">
       <div class="text">{{ contact.country }}</div>
       <div class="text">

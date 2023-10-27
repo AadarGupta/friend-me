@@ -1,7 +1,11 @@
+// Import components and routers
 import { Component } from '@angular/core';
-import { UsersService } from '../users.service';
-import { Contact } from '../model/contact';
 import { Router } from '@angular/router';
+
+// Import the contact, raw contact model and get contacts API service
+import { Contact } from '../model/contact';
+import { GetContactsService } from '../get-contacts.service';
+import { RawContact } from '../model/rawContact';
 
 @Component({
   selector: 'contact-display',
@@ -10,72 +14,62 @@ import { Router } from '@angular/router';
 })
 export class ContactDisplayComponent {
   // Initializes an array for the current contacts, previous contacts and a page number
-  allContacts: Contact[] = [];
-  prevContacts: Contact[] = [];
+  allContacts: Array<Contact[]> = [];
+  //prevContacts: Contact[] = [];
   pageNum: number = 1;
 
   // Starts by constructing the initial data (10 contacts)
-  constructor(private user: UsersService, private router: Router) {
+  constructor(private user: GetContactsService, private router: Router) {
     this.getAPIData();
   }
 
   // Creates contacts using the data from API and adds to the array
   getAPIData(): void {
     // Gets the user data
-    this.user.getData(this.pageNum).subscribe((data) => {
-      // Loops through the data received
-      for (let i = 0; i < data['results'].length; i++) {
-        // Maps the raw data object to the contact object
-        let rawContact: any = data['results'][i];
-        let newContact: Contact = {
-          first: rawContact.name.first,
-          last: rawContact.name.last,
-          phone: rawContact.phone,
-          cell: rawContact.cell,
-          email: rawContact.email,
-          dob: rawContact.dob.date,
-          picture: rawContact.picture.large,
-          country: rawContact.location.country,
-          id: rawContact.id.value,
-        };
-        // Add the contact to the current contacts
-        this.allContacts.push(newContact);
-      }
+    this.user.getData(this.pageNum).subscribe((data: any) => {
+      // Maps the raw data object to the contact object
+      this.allContacts.push(
+        // Maps each raw data to a contact object
+        data['results'].map(function (rawContact: RawContact): Contact {
+          // Returns a contact
+          return {
+            title: rawContact.name.title,
+            first: rawContact.name.first,
+            last: rawContact.name.last,
+            phone: rawContact.phone,
+            cell: rawContact.cell,
+            email: rawContact.email,
+            dob: rawContact.dob.date,
+            picture: rawContact.picture.large,
+            country: rawContact.location.country,
+            id: rawContact.id.value,
+          };
+        })
+      );
     });
+  }
+
+  // Loads data if it doesn't exist (previously visited)
+  loadData() {
+    if (this.allContacts.length < this.pageNum) {
+      this.getAPIData();
+    }
   }
 
   // Switches pages to the next page
   nextPage() {
-    // Increments the page number
+    // Increments the page number and loads data
     this.pageNum++;
-    // Saves last 10 loaded contacts to previous contacts
-    this.prevContacts = [
-      ...this.prevContacts,
-      ...this.allContacts.splice(
-        this.allContacts.length - 10,
-        this.allContacts.length
-      ),
-    ];
-    // Removes the last 10 contacts
-    this.allContacts.splice(0, this.allContacts.length - 10);
-    // Gets the next 10 contacts available
-    this.getAPIData();
+    this.loadData();
   }
 
   // Only switches to a previous page, if it can go back
   prevPage() {
     // If the current page is greater than the first page
     if (this.pageNum > 1) {
-      // Decrement page number
+      // Decrement page number and loads data
       this.pageNum--;
-      // Add the previously loaded contacts back to the current contacts
-      this.allContacts = [
-        ...this.allContacts,
-        ...this.prevContacts.splice(
-          this.prevContacts.length - 10,
-          this.prevContacts.length
-        ),
-      ];
+      this.loadData();
     } else {
       // Alerts if user is on the first page
       alert('You are on the first page, cannot load more data!');
