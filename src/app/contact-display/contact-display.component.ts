@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Contact } from '../model/contact';
 import { GetContactsService } from '../get-contacts.service';
 import { RawContact } from '../model/rawContact';
+import { RawData } from '../model/rawData';
 
 @Component({
   selector: 'contact-display',
@@ -26,8 +27,9 @@ export class ContactDisplayComponent {
   // Creates contacts using the data from API and adds to the array
   getAPIData(): void {
     // Gets the user data
-    this.user.getData(this.pageNum).subscribe((data: any) => {
+    this.user.getData(this.pageNum).subscribe((data: RawData) => {
       // Maps the raw data object to the contact object
+      console.log(data);
       this.allContacts.push(
         // Maps each raw data to a contact object
         data['results'].map(function (rawContact: RawContact): Contact {

@@ -1,4 +1,4 @@
-// Interface of data needed from api call
+// Interface of contact data needed from api call
 export interface RawContact {
   cell: string;
   dob: {

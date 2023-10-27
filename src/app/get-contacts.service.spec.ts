@@ -4,8 +4,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { RawContact } from './model/rawContact';
-import { Contact } from './model/contact';
+import { RawData } from './model/rawData';
 
 import { GetContactsService } from './get-contacts.service';
 
@@ -27,7 +26,7 @@ describe('GetContactsService', () => {
   });
 
   it('should return data', () => {
-    service.getData(1).subscribe((data: any) => {
+    service.getData(1).subscribe((data: RawData) => {
       expect(data).toBeTruthy();
     });
   });
